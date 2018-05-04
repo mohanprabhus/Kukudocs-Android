@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Training-WebView</string>
+
+    <string name="go_to_webpage">Go to Webpage</string>
+</resources>
