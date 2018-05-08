@@ -1,23 +1,18 @@
 package com.realwear.training_webview;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 
 public class WebViewActivity extends Activity {
 
@@ -33,18 +28,14 @@ public class WebViewActivity extends Activity {
 
         if (webSettings != null) {
             webSettings.setJavaScriptEnabled(true);
+            webSettings.setLoadWithOverviewMode(true);
+            webSettings.setUseWideViewPort(true);
         }
-        webview.addJavascriptInterface(new WebAppInterface(this), "Android");
 
+        webview.addJavascriptInterface(new WebAppInterface(this), "Android");
         webview.loadData("", "text/html", null);
         webview.loadUrl(stringURL);
 
-        String testingInput = "Passing this into javascript...";
-        webview.loadUrl("javascript:setJavaArgument('testingInput')");
-    }
-
-    public String getFromAndroid() {
-        return "Passing from java method into javascript";
     }
 
     private static class WebAppInterface {
@@ -53,11 +44,6 @@ public class WebViewActivity extends Activity {
 
         WebAppInterface(Context context) {
             mContext = context;
-        }
-
-        @JavascriptInterface
-        public void foo() {
-
         }
 
         @JavascriptInterface
