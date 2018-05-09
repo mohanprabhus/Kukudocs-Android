@@ -127,7 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	};
 
-	var filePath = "docs/sample_pptx_file.pptx";
+//	var filePath = "docs/sample_small_file.docx";
+	var filePath = "docs/sample_medium_file.xlsx";
+//	var filePath = "docs/sample_large_file.docx";
 
 	if (filePath == null) {
 	    console.error("Input file not found");
@@ -138,10 +140,20 @@ document.addEventListener('DOMContentLoaded', function () {
             content
         ];
 
-        var myfile = new File(parts, 'sample_powerpoint.pptx', {
-            lastModified: new Date(),
-            type: "overide/mimetype"
-        });
+//        var myfile = new File(parts, 'sample_word.docx', {
+//            lastModified: new Date(),
+//            type: "overide/mimetype"
+//        });
+
+         var myfile = new File(parts, 'sample_excel.xlsx', {
+                    lastModified: new Date(),
+                    type: "overide/mimetype"
+                });
+
+//        var myfile = new File(parts, 'sample_powerpoint.pptx', {
+//                    lastModified: new Date(),
+//                    type: "overide/mimetype"
+//                });
 
         documentParser(myfile);
     });
